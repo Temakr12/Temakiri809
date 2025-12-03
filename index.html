@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-POP Figures | Магазин фигурок K-Pop айдолов</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #ff4b8d;
+            --secondary-color: #6c5ce7;
+            --dark-color: #2d3436;
+            --light-color: #f9f9f9;
+            --gray-color: #dfe6e9;
+            --success-color: #00b894;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .logo i {
+            font-size: 28px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 17px;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav a:hover,
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-icons i {
+            font-size: 22px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .header-icons i:hover {
+            transform: scale(1.1);
+        }
+
+        .cart-count {
+            background-color: white;
+            color: var(--primary-color);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            font-weight: bold;
+        }
+
+        .cart-icon {
+            position: relative;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #ff3377;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a4bd4;
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+            font-size: 36px;
+            color: var(--dark-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            background-color: white;
+            border: 2px solid var(--gray-color);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-group {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .product-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .product-price {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .add-to-cart {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background-color: #ff3377;
+        }
+
+        .product-rating {
+            color: #ffc107;
+        }
+
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 100%;
+            max-width: 400px;
+            height: 100%;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: right 0.4s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-modal.active {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid var(--gray-color);
+        }
+
+        .cart-header h2 {
+            color: var(--dark-color);
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--dark-color);
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--gray-color);
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: var(--secondary-color);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 1px solid var(--gray-color);
+            background: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cart-item-quantity {
+            font-weight: 600;
+        }
+
+        .remove-item {
+            color: #ff7675;
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-left: auto;
+        }
+
+        .cart-footer {
+            padding: 20px;
+            border-top: 1px solid var(--gray-color);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+
+        .cart-total span {
+            color: var(--secondary-color);
+        }
+
+        .checkout-btn {
+            width: 100%;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: var(--gray-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s;
+                z-index: 99;
+            }
+
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                color: var(--dark-color);
+                display: block;
+                padding: 10px;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .header-icons {
+                gap: 15px;
+            }
+
+            .hero {
+                padding: 80px 0;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cart-modal {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-crown"></i>
+                <span>K-POP Figures</span>
+            </div>
+
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#" class="active">Главная</a></li>
+                    <li><a href="#products">Фигурки</a></li>
+                    <li><a href="#new">Новинки</a></li>
+                    <li><a href="#pre-order">Предзаказ</a></li>
+                    <li><a href="#about">О нас</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-icons">
+                <div class="cart-icon" id="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </div>
+                <div class="mobile-menu-btn" id="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Коллекционные K-Pop фигурки</h1>
+            <p>Официальные лицензированные фигурки ваших любимых айдолов. Высочайшее качество, детализация и
+                эксклюзивные коллекционные издания.</p>
+            <a href="#products" class="btn">Смотреть коллекцию</a>
+        </div>
+    </section>
+
+    <section id="products">
+        <div class="container">
+            <h2 class="section-title">Коллекция фигурок</h2>
+
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="bts">BTS</button>
+                <button class="filter-btn" data-filter="blackpink">BLACKPINK</button>
+                <button class="filter-btn" data-filter="twice">TWICE</button>
+                <button class="filter-btn" data-filter="exo">EXO</button>
+                <button class="filter-btn" data-filter="straykids">Stray Kids</button>
+            </div>
+
+            <div class="products-grid" id="products-grid">
+            </div>
+        </div>
+    </section>
+
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-header">
+            <h2>Ваша корзина</h2>
+            <button class="close-cart" id="close-cart">&times;</button>
+        </div>
+
+        <div class="cart-items" id="cart-items">
+            <div class="empty-cart-message" id="empty-cart-message">
+                <p>Ваша корзина пуста</p>
+            </div>
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Итого:</span>
+                <span id="cart-total-price">0 ₽</span>
+            </div>
+            <button class="btn checkout-btn" id="checkout-btn">Оформить заказ</button>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>K-POP Figures</h3>
+                    <p>Официальный магазин коллекционных K-Pop фигурок в России. Мы работаем напрямую с производителями,
+                        чтобы предложить вам лучшие цены и гарантированное качество.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Категории</h3>
+                    <ul>
+                        <li><a href="#">BTS Фигурки</a></li>
+                        <li><a href="#">BLACKPINK Фигурки</a></li>
+                        <li><a href="#">TWICE Фигурки</a></li>
+                        <li><a href="#">EXO Фигурки</a></li>
+                        <li><a href="#">Stray Kids Фигурки</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Помощь</h3>
+                    <ul>
+                        <li><a href="#">Доставка и оплата</a></li>
+                        <li><a href="#">Возврат и обмен</a></li>
+                        <li><a href="#">Предзаказ</a></li>
+                        <li><a href="#">Контакты</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Нальчик, ул. Орджаникидзе, 172</li>
+                        <li><i class="fas fa-phone"></i> +7 (999) 123-45-67</li>
+                        <li><i class="fas fa-envelope"></i> info@kpopfigures.ru</li>
+                        <li><i class="fas fa-clock"></i> Пн-Пт: 10:00-20:00</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 K-POP Figures. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Product Data
+        const products = [
+            {
+                id: 1,
+                name: "RM (BTS)",
+                group: "bts",
+                price: 5490,
+                image: "https://avatars.mds.yandex.net/get-mpic/5245500/2a0000018e66ae5c4d7ad2460a6ce3af02c2/orig",
+                rating: 5,
+                description: "Фигурка лидера BTS - RM, высота 20см"
+            },
+            {
+                id: 2,
+                name: "JENNIE (BLACKPINK)",
+                group: "blackpink",
+                price: 5990,
+                image: "https://img.joomcdn.net/1eef79e9082406b2d56c329b528fbf2a34f796af_original.jpeg",
+                rating: 5,
+                description: "Фигурка Дженни из BLACKPINK, высота 22см"
+            },
+            {
+                id: 3,
+                name: "NAYEON (TWICE)",
+                group: "twice",
+                price: 5290,
+                image: "https://avatars.mds.yandex.net/i?id=a752835f1413d106e0731d33f6f6b10d_l-5231699-images-thumbs&n=13",
+                rating: 4,
+                description: "Фигурка Наён из TWICE, высота 18см"
+            },
+            {
+                id: 4,
+                name: "BAEKHYUN (EXO)",
+                group: "exo",
+                price: 5790,
+                image: "https://akiba.su/images/cms/thumbs/webp/aa/aac6197d075511e9bbbe000c29100f90_87ad9102077011e9bbbe000c29100f90.webp",
+                rating: 5,
+                description: "Фигурка Бэкхёна из EXO, высота 21см"
+            },
+            {
+                id: 5,
+                name: "BANG CHAN (Stray Kids)",
+                group: "straykids",
+                price: 5490,
+                image: "https://cdn1.ozone.ru/s3/multimedia-1-a/7047876898.jpg",
+                rating: 4,
+                description: "Фигурка Бан Чана из Stray Kids, высота 19см"
+            },
+            {
+                id: 6,
+                name: "JIMIN (BTS)",
+                group: "bts",
+                price: 5490,
+                image: "https://avatars.mds.yandex.net/get-mpic/5207395/2a00000192b8ccdac8ceab18206b9d76351f/450x600",
+                rating: 5,
+                description: "Фигурка Чимина из BTS, высота 20см"
+            },
+            {
+                id: 7,
+                name: "LISA (BLACKPINK)",
+                group: "blackpink",
+                price: 5990,
+                image: "https://img.joomcdn.net/55643a4cbaebb26292effb3b0ce92b3c93f13ccc_original.jpeg",
+                rating: 5,
+                description: "Фигурка Лисы из BLACKPINK, высота 22см"
+            },
+            {
+                id: 8,
+                name: "CHEN (EXO)",
+                group: "exo",
+                price: 5290,
+                image: "https://i.pinimg.com/originals/f1/25/61/f1256126f6d513dd0ef2747ab43dc4af.jpg",
+                rating: 4,
+                description: "Фигурка Чена из EXO, высота 19см"
+            },
+
+            {
+                id: 9,
+                name: "JUNGKOOK (BTS)",
+                group: "bts",
+                price: 5790,
+                image: "https://avatars.mds.yandex.net/get-mpic/12421103/2a0000018e66ba3c246c01bc40feea538fe1/orig",
+                rating: 5,
+                description: "Фигурка Чонгука из BTS, лимитированная серия, высота 21см"
+            }
+        ];
+
+
+        let cart = [];
+        const productsGrid = document.getElementById('products-grid');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cartIcon = document.getElementById('cart-icon');
+        const cartModal = document.getElementById('cart-modal');
+        const closeCart = document.getElementById('close-cart');
+        const overlay = document.getElementById('overlay');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotalPrice = document.getElementById('cart-total-price');
+        const cartCount = document.querySelector('.cart-count');
+        const checkoutBtn = document.getElementById('checkout-btn');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mainNav = document.getElementById('main-nav');
+        const emptyCartMessage = document.getElementById('empty-cart-message');
+
+        document.addEventListener('DOMContentLoaded', function () {
+            renderProducts(products);
+            setupEventListeners();
+            updateCart();
+        });
+
+        function renderProducts(productsToRender) {
+            productsGrid.innerHTML = '';
+
+            productsToRender.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.setAttribute('data-group', product.group);
+
+                let stars = '';
+                for (let i = 1; i <= 5; i++) {
+                    if (i <= product.rating) {
+                        stars += '<i class="fas fa-star"></i>';
+                    } else {
+                        stars += '<i class="far fa-star"></i>';
+                    }
+                }
+
+                productCard.innerHTML = `
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-group">${product.group.toUpperCase()}</div>
+                        <h3 class="product-name">${product.name}</h3>
+                        <p>${product.description}</p>
+                        <div class="product-rating">${stars}</div>
+                        <div class="product-price">${product.price.toLocaleString()} ₽</div>
+                        <div class="product-actions">
+                            <button class="add-to-cart" data-id="${product.id}">В корзину</button>
+                        </div>
+                    </div>
+                `;
+
+                productsGrid.appendChild(productCard);
+            });
+
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function () {
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    addToCart(productId);
+                });
+            });
+        }
+
+        function setupEventListeners() {
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    const filter = this.getAttribute('data-filter');
+                    filterProducts(filter);
+                });
+            });
+
+            cartIcon.addEventListener('click', openCart);
+            closeCart.addEventListener('click', closeCartModal);
+            overlay.addEventListener('click', closeCartModal);
+            checkoutBtn.addEventListener('click', checkout);
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+        }
+
+        function filterProducts(filter) {
+            if (filter === 'all') {
+                renderProducts(products);
+            } else {
+                const filteredProducts = products.filter(product => product.group === filter);
+                renderProducts(filteredProducts);
+            }
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({
+                    ...product,
+                    quantity: 1
+                });
+            }
+
+            updateCart();
+            showNotification(`${product.name} добавлен в корзину!`);
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+        }
+
+        function updateCart() {
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+
+            renderCartItems();
+            const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            cartTotalPrice.textContent = `${totalPrice.toLocaleString()} ₽`;
+
+            if (cart.length === 0) {
+                emptyCartMessage.style.display = 'block';
+            } else {
+                emptyCartMessage.style.display = 'none';
+            }
+        }
+
+        function renderCartItems() {
+            cartItemsContainer.innerHTML = '';
+
+            cart.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-image">
+                        <img src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="cart-item-details">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">${item.price.toLocaleString()} ₽</div>
+                        <div class="cart-item-actions">
+                            <button class="quantity-btn decrease-quantity" data-id="${item.id}">-</button>
+                            <span class="cart-item-quantity">${item.quantity}</span>
+                            <button class="quantity-btn increase-quantity" data-id="${item.id}">+</button>
+                            <button class="remove-item" data-id="${item.id}"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                `;
+
+                cartItemsContainer.appendChild(cartItem);
+            });
+
+            document.querySelectorAll('.decrease-quantity').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    decreaseQuantity(productId);
+                });
+            });
+
+            document.querySelectorAll('.increase-quantity').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    increaseQuantity(productId);
+                });
+            });
+
+            document.querySelectorAll('.remove-item').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    removeFromCart(productId);
+                });
+            });
+        }
+
+        function increaseQuantity(productId) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity++;
+                updateCart();
+            }
+        }
+
+        function decreaseQuantity(productId) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                if (item.quantity > 1) {
+                    item.quantity--;
+                } else {
+                    removeFromCart(productId);
+                }
+                updateCart();
+            }
+        }
+
+        function openCart() {
+            cartModal.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCartModal() {
+            cartModal.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Ваша корзина пуста!');
+                return;
+            }
+
+            const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            alert(`Заказ оформлен на сумму ${totalPrice.toLocaleString()} ₽!\nСпасибо за покупку!`);
+            cart = [];
+            updateCart();
+            closeCartModal();
+        }
+
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+                color: white;
+                padding: 15px 20px;
+                border-radius: 5px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                z-index: 10000;
+                animation: slideIn 0.3s ease, fadeOut 0.3s ease 2.7s;
+                font-weight: 600;
+            `;
+
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                @keyframes fadeOut {
+                    from { opacity: 1; }
+                    to { opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.remove();
+                style.remove();
+            }, 3000);
+        }
+
+        function toggleMobileMenu() {
+            mainNav.classList.toggle('active');
+            overlay.classList.toggle('active');
+
+            if (mainNav.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function closeMobileMenu() {
+            mainNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+</body>
+
+</html>
